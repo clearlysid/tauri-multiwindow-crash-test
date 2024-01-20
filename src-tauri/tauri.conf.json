@@ -37,9 +37,18 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "tauri-frontend-bug",
+        "title": "Window 1",
         "width": 540,
-        "height": 480
+        "height": 360
+      },
+      {
+        "label": "window2",
+        "fullscreen": false,
+        "resizable": true,
+        "title": "Window 2",
+        "url": "second.html",
+        "width": 540,
+        "height": 360
       }
     ]
   }
