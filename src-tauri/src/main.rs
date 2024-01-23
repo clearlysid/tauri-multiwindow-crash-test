@@ -3,16 +3,12 @@
 
 fn main() {
     tauri::Builder::default()
-        .setup(|app| {
-            // Create a second window at runtime
-            // tauri::WindowBuilder::new(app, "second", tauri::WindowUrl::App("/second".into()))
-            //     .inner_size(540.0, 480.0)
-            //     .title("tauri-frontend-bug Window 2")
-            //     .center()
-            //     .build()
-            //     .expect("couldn't create a second window");
-
-            Ok(())
+        .on_window_event(|event| match event.event() {
+            tauri::WindowEvent::CloseRequested { api, .. } => {
+            event.window().hide().unwrap();
+            api.prevent_close();
+            }
+            _ => {}
         })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
